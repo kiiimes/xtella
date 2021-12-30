@@ -1,0 +1,8 @@
+*.o
+*.so
+*.a
+*.xml
+*.log
+*.d
+pqos/pqos
+rdtset/rdtset
