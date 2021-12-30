@@ -1,0 +1,36 @@
+6991728e8898   76b3123d95fc                       "recommendation"         35 hours ago   Up 35 hours                                                         k8s_hotel-reserv-recommendation_recommendation-69fbc9dfbf-kpdz8_default_135a5b66-a223-441e-bddc-a5629528a5e8_4
+517d4a1dd98f   mongo                              "docker-entrypoint.s…"   35 hours ago   Up 35 hours                                                         k8s_hotel-reserv-recommendation-mongo_mongodb-recommendation-7fc85cc9c4-8hspx_default_1675b19b-5648-4f94-9bb7-bbf2d005795a_0
+e046b20f22dc   mongo                              "docker-entrypoint.s…"   35 hours ago   Up 35 hours                                                         k8s_hotel-reserv-profile-mongo_mongodb-profile-5876bc4764-p7rzf_default_893da79e-1356-4b4c-94bb-a3f99445229c_0
+f82211df93db   76b3123d95fc                       "rate"                   35 hours ago   Up 35 hours                                                         k8s_hotel-reserv-rate_rate-c49b44944-xtv47_default_f167e757-3309-4347-8587-f298c18752cb_1
+e6fb999fb629   mongo                              "docker-entrypoint.s…"   35 hours ago   Up 35 hours                                                         k8s_hotel-reserv-rate-mongo_mongodb-rate-6cc878bc4f-vsrmf_default_29f5350e-0443-416b-ada5-d17587ecd9e3_0
+6b1c73843486   mongo                              "docker-entrypoint.s…"   35 hours ago   Up 35 hours                                                         k8s_hotel-reserv-user-mongo_mongodb-user-84b97c5ff4-fs4jn_default_f756a200-4127-4ab5-8b5f-3724f4b074e4_0
+1939f7eff0c7   76b3123d95fc                       "reservation"            35 hours ago   Up 35 hours                                                         k8s_hotel-reserv-reservation_reservation-64566dc789-gplwf_default_d9849b44-33ab-422b-8818-d45ea2c96bb6_1
+124a30bdf897   76b3123d95fc                       "profile"                35 hours ago   Up 35 hours                                                         k8s_hotel-reserv-profile_profile-d66dfff99-8plkc_default_328f5f2b-c135-4bfd-8bd6-fdb3ba2e5a8c_1
+8582d84dc52b   76b3123d95fc                       "user"                   35 hours ago   Up 35 hours                                                         k8s_hotel-reserv-user_user-677bc5cdf6-mzvmk_default_29aba85c-cbe6-4d21-b9f4-0523c9674f7e_1
+138038ba0651   mongo                              "docker-entrypoint.s…"   35 hours ago   Up 35 hours                                                         k8s_hotel-reserv-reservation-mongo_mongodb-reservation-7b6fdb8588-56jz6_default_502fff9a-028c-46e5-b59d-2f80168b6139_0
+f961b67c58cf   76b3123d95fc                       "geo"                    35 hours ago   Up 35 hours                                                         k8s_hotel-reserv-geo_geo-7d4b6bd47c-jl9q5_default_c44c3698-1993-4805-b514-fb41bb3fe19f_1
+e2b2e9d88738   mongo                              "docker-entrypoint.s…"   35 hours ago   Up 35 hours                                                         k8s_hotel-reserv-geo-mongo_mongodb-geo-654f9d594-pvwrr_default_d9fd32f7-2230-47b9-8bc1-380199f18b90_0
+fabe25878fbf   memcached                          "docker-entrypoint.s…"   35 hours ago   Up 35 hours                                                         k8s_hotel-reserv-reservation-mmc_memcached-reserve-5d99c48688-pzhz7_default_5ed22420-23fc-4fb1-b11d-5376ad80531a_0
+c5eeae3fd85c   memcached                          "docker-entrypoint.s…"   35 hours ago   Up 35 hours                                                         k8s_hotel-reserv-profile-mmc_memcached-profile-76c5ccb69d-b5wvw_default_df8be76e-bf7c-45dc-af4f-611f5fe894e4_0
+e984a37666ad   76b3123d95fc                       "search"                 35 hours ago   Up 35 hours                                                         k8s_hotel-reserv-search_search-68ffd7d77d-7vwjg_default_dd60513a-99c5-414a-9454-c4b41d2ffdf2_0
+af6013be1625   jaegertracing/all-in-one           "/go/bin/all-in-one-…"   35 hours ago   Up 35 hours                                                         k8s_hotel-reserv-jaeger_jaeger-5b6b6b9b56-d5h57_default_fa57a38d-347d-4d22-bd6d-08de7521757a_0
+828e37fb96f2   memcached                          "docker-entrypoint.s…"   35 hours ago   Up 35 hours                                                         k8s_hotel-reserv-rate-mmc_memcached-rate-89f5f858d-qnwgt_default_89cadf7b-0fac-40e2-bad7-db22f0820c08_0
+54316b2b7fab   76b3123d95fc                       "frontend"               35 hours ago   Up 35 hours                                                         k8s_hotel-reserv-frontend_frontend-6bfc8d5757-dsnww_default_9aadca1b-ff7e-47e6-bc10-3e5ffc6ea0a7_0
+739
+532
+30983
+30849
+30701
+30386
+30265
+30237
+30058
+29943
+29776
+29610
+29470
+29299
+29019
+27938
+27205
+26239

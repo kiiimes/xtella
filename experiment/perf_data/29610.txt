@@ -1,0 +1,73 @@
+# started on Mon Jul 12 04:19:10 2021
+
+
+ Performance counter stats for process id '29610':
+
+                 0      offcore_response                                            
+                 1      offcore_response.all_code_rd.llc_hit.hit_other_core_no_fwd                                   
+     <not counted>      offcore_response.all_data_rd.llc_hit.hit_other_core_no_fwd                                     (0.00%)
+     <not counted>      offcore_response.all_data_rd.llc_hit.hitm_other_core                                     (0.00%)
+     <not counted>      offcore_response.all_reads.llc_hit.hit_other_core_no_fwd                                     (0.00%)
+     <not counted>      offcore_response.all_reads.llc_hit.hitm_other_core                                     (0.00%)
+     <not counted>      offcore_response.all_requests.llc_hit.any_response                                     (0.00%)
+     <not counted>      offcore_response.all_rfo.llc_hit.hit_other_core_no_fwd                                     (0.00%)
+     <not counted>      offcore_response.all_rfo.llc_hit.hitm_other_core                                     (0.00%)
+     <not counted>      offcore_response.demand_code_rd.llc_hit.hit_other_core_no_fwd                                     (0.00%)
+     <not counted>      offcore_response.demand_code_rd.llc_hit.hitm_other_core                                     (0.00%)
+     <not counted>      offcore_response.demand_data_rd.llc_hit.hit_other_core_no_fwd                                     (0.00%)
+     <not counted>      offcore_response.demand_data_rd.llc_hit.hitm_other_core                                     (0.00%)
+     <not counted>      offcore_response.demand_rfo.llc_hit.hit_other_core_no_fwd                                     (0.00%)
+     <not counted>      offcore_response.demand_rfo.llc_hit.hitm_other_core                                     (0.00%)
+     <not counted>      offcore_response.pf_l2_code_rd.llc_hit.any_response                                     (0.00%)
+     <not counted>      offcore_response.pf_l2_data_rd.llc_hit.any_response                                     (0.00%)
+     <not counted>      offcore_response.pf_l2_rfo.llc_hit.any_response                                     (0.00%)
+     <not counted>      offcore_response.pf_llc_code_rd.llc_hit.any_response                                     (0.00%)
+     <not counted>      offcore_response.pf_llc_data_rd.llc_hit.any_response                                     (0.00%)
+     <not counted>      offcore_response.pf_llc_rfo.llc_hit.any_response                                     (0.00%)
+     <not counted>      offcore_response.all_code_rd.llc_miss.any_response                                     (0.00%)
+     <not counted>      offcore_response.all_code_rd.llc_miss.local_dram                                     (0.00%)
+     <not counted>      offcore_response.all_data_rd.llc_miss.any_response                                     (0.00%)
+     <not counted>      offcore_response.all_data_rd.llc_miss.local_dram                                     (0.00%)
+     <not counted>      offcore_response.all_data_rd.llc_miss.remote_dram                                     (0.00%)
+     <not counted>      offcore_response.all_data_rd.llc_miss.remote_hit_forward                                     (0.00%)
+     <not counted>      offcore_response.all_data_rd.llc_miss.remote_hitm                                     (0.00%)
+     <not counted>      offcore_response.all_reads.llc_miss.any_response                                     (0.00%)
+     <not counted>      offcore_response.all_reads.llc_miss.local_dram                                     (0.00%)
+     <not counted>      offcore_response.all_reads.llc_miss.remote_dram                                     (0.00%)
+     <not counted>      offcore_response.all_reads.llc_miss.remote_hit_forward                                     (0.00%)
+     <not counted>      offcore_response.all_reads.llc_miss.remote_hitm                                     (0.00%)
+     <not counted>      offcore_response.all_requests.llc_miss.any_response                                     (0.00%)
+     <not counted>      offcore_response.all_rfo.llc_miss.any_response                                     (0.00%)
+     <not counted>      offcore_response.all_rfo.llc_miss.local_dram                                     (0.00%)
+     <not counted>      offcore_response.demand_code_rd.llc_miss.any_response                                     (0.00%)
+     <not counted>      offcore_response.demand_code_rd.llc_miss.local_dram                                     (0.00%)
+     <not counted>      offcore_response.demand_data_rd.llc_miss.any_response                                     (0.00%)
+     <not counted>      offcore_response.demand_data_rd.llc_miss.local_dram                                     (0.00%)
+     <not counted>      offcore_response.demand_rfo.llc_miss.any_response                                     (0.00%)
+     <not counted>      offcore_response.demand_rfo.llc_miss.local_dram                                     (0.00%)
+     <not counted>      offcore_response.demand_rfo.llc_miss.remote_hitm                                     (0.00%)
+     <not counted>      offcore_response.pf_l2_code_rd.llc_miss.any_response                                     (0.00%)
+     <not counted>      offcore_response.pf_l2_data_rd.llc_miss.any_response                                     (0.00%)
+     <not counted>      offcore_response.pf_l2_rfo.llc_miss.any_response                                     (0.00%)
+     <not counted>      offcore_response.pf_llc_code_rd.llc_miss.any_response                                     (0.00%)
+     <not counted>      offcore_response.pf_llc_data_rd.llc_miss.any_response                                     (0.00%)
+     <not counted>      offcore_response.pf_llc_rfo.llc_miss.any_response                                     (0.00%)
+     <not counted>      L1-dcache-loads                                               (0.00%)
+     <not counted>      L1-dcache-load-misses                                         (0.00%)
+     <not counted>      LLC-loads                                                     (0.00%)
+     <not counted>      LLC-load-misses                                               (0.00%)
+   <not supported>      L1-icache-loads                                             
+     <not counted>      L1-icache-load-misses                                         (0.00%)
+     <not counted>      dTLB-loads                                                    (0.00%)
+     <not counted>      dTLB-load-misses                                              (0.00%)
+     <not counted>      iTLB-loads                                                    (0.00%)
+     <not counted>      iTLB-load-misses                                              (0.00%)
+   <not supported>      L1-dcache-prefetches                                        
+   <not supported>      L1-dcache-prefetch-misses                                   
+
+      60.013613052 seconds time elapsed
+
+Some events weren't counted. Try disabling the NMI watchdog:
+	echo 0 > /proc/sys/kernel/nmi_watchdog
+	perf stat ...
+	echo 1 > /proc/sys/kernel/nmi_watchdog
