@@ -1,0 +1,51 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: review-storage-service
+  namespace: media-microsvc
+  labels:
+    death-star-project: media-microsvc
+    app-name: review-storage-service
+spec:
+  ports:
+  - port: 9090
+  selector:
+    death-star-project: media-microsvc
+    app-name: review-storage-service
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    "sidecar.jaegertracing.io/inject": "true"
+  name: review-storage-service
+  namespace: media-microsvc
+  labels:
+    death-star-project: media-microsvc
+    app-name: review-storage-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      death-star-project: media-microsvc
+      app-name: review-storage-service
+  template:
+    metadata:
+      labels: 
+        death-star-project: media-microsvc
+        app-name: review-storage-service
+        OUTPUT: review-storage-mongodb
+        INPUT: compose-review-service
+      name: review-storage-service
+    spec:
+      containers:
+      - name: review-storage-service
+        image: poanpan/media-microservices-local-jaeger:v0.0.1
+        command: ["ReviewStorageService"]
+        resources: 
+          requests: 
+            cpu: "200m"
+            memory: "12Mi"
+      restartPolicy: Always
+      # schedulerName: poseidon

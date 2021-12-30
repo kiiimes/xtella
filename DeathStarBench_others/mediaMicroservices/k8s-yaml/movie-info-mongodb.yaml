@@ -1,0 +1,49 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: movie-info-mongodb
+  namespace: media-microsvc
+  labels:
+    death-star-project: media-microsvc
+    app-name: movie-info-mongodb
+spec:
+  ports:
+  - port: 27017
+  selector:
+    death-star-project: media-microsvc
+    app-name: movie-info-mongodb
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    "sidecar.jaegertracing.io/inject": "true"
+  name: movie-info-mongodb
+  namespace: media-microsvc
+  labels:
+    death-star-project: media-microsvc
+    app-name: movie-info-mongodb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      death-star-project: media-microsvc
+      app-name: movie-info-mongodb
+  template:
+    metadata:
+      labels: 
+        death-star-project: media-microsvc
+        app-name: movie-info-mongodb
+        INPUT: movie-info-service
+      name: movie-info-mongodb
+    spec:
+      containers:
+      - name: movie-info-mongodb
+        image: poanpan/mongo:v1
+        resources: 
+          requests: 
+            cpu: "20m"
+            memory: "130Mi"
+      restartPolicy: Always
+      # schedulerName: poseidon

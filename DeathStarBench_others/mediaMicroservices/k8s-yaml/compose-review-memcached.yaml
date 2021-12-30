@@ -1,0 +1,49 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: compose-review-memcached
+  namespace: media-microsvc
+  labels:
+    death-star-project: media-microsvc
+    app-name: compose-review-memcached
+spec:
+  ports:
+  - port: 11211
+  selector:
+    death-star-project: media-microsvc
+    app-name: compose-review-memcached
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    "sidecar.jaegertracing.io/inject": "true"
+  name: compose-review-memcached
+  namespace: media-microsvc
+  labels:
+    death-star-project: media-microsvc
+    app-name: compose-review-memcached
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      death-star-project: media-microsvc
+      app-name: compose-review-memcached
+  template:
+    metadata:
+      labels: 
+        death-star-project: media-microsvc
+        app-name: compose-review-memcached
+        INPUT: compose-review-service
+      name: compose-review-memcached
+    spec:
+      containers:
+      - name: compose-review-memcached
+        image: poanpan/memcached:v1
+        resources: 
+          requests: 
+            cpu: "600m"
+            memory: "20Mi"
+      restartPolicy: Always
+      # schedulerName: poseidon

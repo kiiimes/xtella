@@ -1,0 +1,74 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-web-server
+  namespace: media-microsvc
+  labels:
+    death-star-project: media-microsvc
+    app-name: nginx-web-server
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    nodePort: 32000
+  selector:
+    death-star-project: media-microsvc
+    app-name: nginx-web-server
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    "sidecar.jaegertracing.io/inject": "true"
+  name: nginx-web-server
+  namespace: media-microsvc
+  labels:
+    death-star-project: media-microsvc
+    app-name: nginx-web-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      death-star-project: media-microsvc
+      app-name: nginx-web-server
+  template:
+    metadata:
+      labels: 
+        death-star-project: media-microsvc
+        app-name: nginx-web-server
+        OUTPUT1: text-service
+        OUTPUT2: movie-id-service
+        OUTPUT3: unique-id-service
+        OUTPUT4: movie-info-service
+        OUTPUT5: plot-service
+        OUTPUT6: cast-info-service
+        OUTPUT7: user-service
+      name: nginx-web-server
+    spec:
+      containers:
+      - name: nginx-web-server
+        image: yg397/openresty-thrift:xenial
+        volumeMounts:
+        - mountPath: /usr/local/openresty/nginx/lua-scripts
+          name: deathstar-nfs-pvc
+          subPath: mediaMicroservices/nginx-web-server/lua-scripts-k8s
+        - mountPath: /usr/local/openresty/nginx/conf/nginx.conf
+          name: deathstar-nfs-pvc
+          subPath: mediaMicroservices/nginx-web-server/conf/nginx-k8s.conf
+        - mountPath: /usr/local/openresty/nginx/jaeger-config.json
+          name: deathstar-nfs-pvc
+          subPath: mediaMicroservices/nginx-web-server/jaeger-config.json
+        - mountPath: /gen-lua
+          name: deathstar-nfs-pvc
+          subPath: mediaMicroservices/gen-lua
+        resources: 
+          requests: 
+            cpu: "600m"
+            memory: "40Mi"
+      restartPolicy: Always
+      volumes:
+      - name: deathstar-nfs-pvc
+        persistentVolumeClaim:
+          claimName: deathstar-nfs-pvc
+      # schedulerName: poseidon

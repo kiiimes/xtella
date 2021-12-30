@@ -1,0 +1,12 @@
+{
+  "service_name": "me-nginx",
+  "diabled": false,
+  "reporter": {
+    "logSpans": true,
+    "localAgentHostPort": "127.0.0.1:6831"
+  },
+  "sampler": {
+    "type": "ratelimiting",
+    "param": "50"
+  }
+}

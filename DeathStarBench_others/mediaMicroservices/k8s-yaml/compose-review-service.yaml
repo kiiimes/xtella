@@ -1,0 +1,58 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: compose-review-service
+  namespace: media-microsvc
+  labels:
+    death-star-project: media-microsvc
+    app-name: compose-review-service
+spec:
+  ports:
+  - port: 9090
+  selector:
+    death-star-project: media-microsvc
+    app-name: compose-review-service
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    "sidecar.jaegertracing.io/inject": "true"
+  name: compose-review-service
+  namespace: media-microsvc
+  labels:
+    death-star-project: media-microsvc
+    app-name: compose-review-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      death-star-project: media-microsvc
+      app-name: compose-review-service
+  template:
+    metadata:
+      labels: 
+        death-star-project: media-microsvc
+        app-name: compose-review-service
+        OUTPUT1: compose-review-memcached
+        OUTPUT2: review-storage-service
+        OUTPUT3: user-review-service
+        OUTPUT4: movie-review-service
+        INPUT1: text-service
+        INPUT2: movie-id-service
+        INPUT3: unique-id-service
+        INPUT4: rating-service
+        INPUT5: user-service
+      name: compose-review-service
+    spec:
+      containers:
+      - name: compose-review-service
+        image: poanpan/media-microservices-local-jaeger:v0.0.1
+        command: ["ComposeReviewService"]
+        resources: 
+          requests: 
+            cpu: "1300m"
+            memory: "34Mi"
+      restartPolicy: Always
+      # schedulerName: poseidon
