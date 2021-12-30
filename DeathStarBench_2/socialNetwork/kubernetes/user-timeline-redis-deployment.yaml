@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: user-timeline-redis
+  name: user-timeline-redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: user-timeline-redis
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: user-timeline-redis
+    spec:
+      containers:
+        - image: redis
+          name: user-timeline-redis
+          resources: {}
+      hostname: user-timeline-redis
+      restartPolicy: Always
+status: {}

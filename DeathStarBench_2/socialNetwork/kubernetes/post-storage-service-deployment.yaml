@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: post-storage-service
+  name: post-storage-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: post-storage-service
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: post-storage-service
+    spec:
+      containers:
+        - command:
+            - PostStorageService
+          image: yg397/social-network-microservices:latest
+          name: post-storage-service
+          ports:
+            - containerPort: 9090
+          resources: {}
+          volumeMounts:
+            - mountPath: /social-network-microservices/config
+              name: config-pvc
+      hostname: post-storage-service
+      restartPolicy: Always
+      volumes:
+        - name: config-pvc
+          persistentVolumeClaim:
+            claimName: config-pvc
+status: {}

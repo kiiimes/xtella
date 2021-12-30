@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata: 
+  name: genlua-pv
+spec:
+  capacity:
+    storage: 100Mi
+  accessModes:
+  - ReadOnlyMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: genlua-storage
+  nfs:
+    path: /mnt/s2/DeathStarBench_2/socialNetwork/gen-lua
+    server: 10.0.0.23

@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: user-timeline-mongodb
+  name: user-timeline-mongodb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: user-timeline-mongodb
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: user-timeline-mongodb
+    spec:
+      containers:
+        - image: mongo
+          name: user-timeline-mongodb
+          resources: {}
+      hostname: user-timeline-mongodb
+      restartPolicy: Always
+status: {}

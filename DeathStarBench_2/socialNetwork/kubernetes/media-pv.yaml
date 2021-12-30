@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata: 
+  name: media-pv
+spec:
+  volumeMode: Filesystem
+  capacity:
+    storage: 100Mi
+  accessModes:
+  - ReadOnlyMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: media-storage
+  nfs:
+    path: /mnt/s2/DeathStarBench_2/socialNetwork/media-frontend
+    server: 10.0.0.23
