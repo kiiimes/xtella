@@ -106,9 +106,10 @@ echo $time1 >> time.txt
 time2=`date "+%s"`
 echo $time2 >> time.txt	
 ```
-	* wrk 커맨드 실행시 위의 스크립트를 함께 실행
-		* 측정 시작 시간을 time.txt에 저장하고 pcm을 이용하여 LLC & memory bandwidth를 측정함
-		* 측정 종료 후 측정 종료 시간을 time.txt에 저장함.
+* wrk 커맨드 실행시 위의 스크립트를 함께 실행
+	* 측정 시작 시간을 time.txt에 저장하고 pcm을 이용하여 LLC & memory bandwidth를 측정함
+	* 측정 종료 후 측정 종료 시간을 time.txt에 저장함.
+
 * 프로메테우스 측정 지표 저장 방법
 	* get_data.sh 스크립트 이용 
 		* 디렉토리 : /mnt/eskim/xtella/experiment/prometheus-2.28.1.linux-amd64
@@ -147,10 +148,10 @@ curl 'http://localhost:9090/api/v1/query_range?query=container_fs_usage_bytes&st
 	* LLC & memory bandwidth : PCM으로 수집한 결과는 전체 core의 memory, LLC bandwidth  또는 각 core 별 memory, LLC bandwidth를 얻을 수 있음. 전체 core의 memory, LLC bandwidth를 측정. LLC bandwidth는 1초 당 Socket0의 L3OCC 값의 1분 평균, memory bandwidth는 1초 당 Socker0의 READ, WRITE 값의 1분 평균을 각각 구한 합 -> LLC bandwidth의 단위는 Mbps(변환 필요), memory Bandwidth는 Gbps 
 
 ### 실험 툴 정리
-* CPU, network (tx, rx), disk bandwidth (read, write) 측정 툴
-	* prometheus + cadvisor를 이용하여 측정
+* CPU, network (tx, rx), disk bandwidth (read, write) 측정 툴
+	* prometheus + cadvisor를 이용하여 측정
 		* prometheus는 시스템 모니터링을 위한 오픈소스 시스템
-		* kubernetes에서도 prometheus를 이용하여 메트릭 수집 가능
+		* kubernetes에서도 prometheus를 이용하여 메트릭 수집 가능
 		* [🎤 prometheus(프로메테우스) 설치 및 실행](https://velog.io/@ckstn0777/prometheus%ED%94%84%EB%A1%9C%EB%A9%94%ED%85%8C%EC%9A%B0%EC%8A%A4-%EC%84%A4%EC%B9%98-%EB%B0%8F-%EC%8B%A4%ED%96%89)
 		* cadvisor는 도커 호스트에 컨테이너로서 실행되는 모니터링 툴로 도커 컨테이너 리소스를 모니터링 가능
 		* wrk를 실행시킨 시작 시간 및 종료 시간을 측정하여 해당 기간 만큼의 메트릭을 저장
