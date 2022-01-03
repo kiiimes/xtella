@@ -31,7 +31,8 @@
 	* -c200 : HTTP Connection 200개를 서버에 연결하고 (각 Thread 별로 10개의 Connection 연결) 
 	* -d60s : 60초 동안 지속적으로 트래픽 발생
 	* -R : 초당 요청 수 
-[image:D8786B18-9C63-446B-98CE-7B1948A6D7D7-975-000039E7DC6A449C/AC60946E-64E1-4975-BBCE-3AF77247E7D2.png]
+![AC60946E-64E1-4975-BBCE-3AF77247E7D2](https://user-images.githubusercontent.com/28219985/147912820-a38a290a-ecac-4920-a9fe-9be027909f5a.png)
+
 * 출력 값 설명
 	* Latency 61.21ms : 평균 응답시간, 6.23ms : 표준 편차, 최대 값 : 137.15ms, 표준편차 1 범위에 들어가는 확률은 83.66% 를 나타냄	.
 		* (Stdev가 낮을 수록 +/- Stdev가 높을 수록 latency가 안정적이라고 봄)
@@ -167,15 +168,15 @@ curl 'http://localhost:9090/api/v1/query_range?query=container_fs_usage_bytes&st
 
 ## 실험 결과
 ### Hotel reservation 워크로드의 구조
-[image:19E508B5-21DD-423B-924F-8C88D39C3634-975-0000755730CA0210/t937P9Zn54Yu5VQGQ5GamAz6hvQQk12FS_4L7zfdfK9VekNEqjEkYzjTe6z74L_CyedXmpGXFdq6-Rw5J6WzasI2riMzeGiF6vDxkqLVSLgFpSZEffsDW5uartHYuQ8LBH-STdqG.png]
+![t937P9Zn54Yu5VQGQ5GamAz6hvQQk12FS_4L7zfdfK9VekNEqjEkYzjTe6z74L_CyedXmpGXFdq6-Rw5J6WzasI2riMzeGiF6vDxkqLVSLgFpSZEffsDW5uartHYuQ8LBH-STdqG](https://user-images.githubusercontent.com/28219985/147912851-3b65c691-332d-481a-aa31-562c313c35a4.png)
 	* 각 마이크로 서비스는 frontend, business logic, caching & DB 로 구성
 	* 모든 http request는 frontend를 거쳐 전달되고 Search, User, Recommend, Reserve 중 요청하는 서비스에 따라 그 뒤에 실행되는 마이크로 서비스가 달라짐. 
 	* caching & DB는 memcached와 mongoDB로 이루어짐. memcached의 hit, miss 여부에 따라 mongoDB의 접근 여부가 달라짐. 
 ### 실험 결과 요약
-[image:55FE4595-61FD-4FF6-B0E1-6CADFC159BB3-975-0000775E273B08E5/F35D3540-E531-4C98-B856-033A0BD4FE56.png]
-[image:CE8C220B-0C62-4DA3-ADFE-06EF54B8D8EF-975-00007764FDB7666E/FC0DFF96-6EFC-4B2D-A820-FA4DCBF27E39.png]
+![F35D3540-E531-4C98-B856-033A0BD4FE56](https://user-images.githubusercontent.com/28219985/147912891-dc5bc6d7-bd59-44c4-bda5-d84814ed8fb7.png)
+![FC0DFF96-6EFC-4B2D-A820-FA4DCBF27E39](https://user-images.githubusercontent.com/28219985/147912895-0ccefc40-f36f-4120-9bdf-052f3f6f4d37.png)
 * frontend: 
-	* frontend는 모든 http request가 거쳐가므로 가장 높은 CPU 사용량과 network bandwidth를 보
+	* frontend는 모든 http request가 거쳐가므로 가장 높은 CPU 사용량과 network bandwidth를 보임
 * business logic: 
 	* wrk 스크립트는 workload.lua 파일을 실행하는데 DeathStarBench에서 제공하는 workload 스크립트 상에서 Search 서비스가 가장 많은 비율 (0.6) 으로  서비스 요청이 되어 Search 서비스에서 호출하는 profile, geo, rate 서비스에서 높은 CPU 및 네트워크 사용량을 보임
 	* reservation 서비스는 0.05의 낮은 비율로 호출됨에도 예약 정보를 저장하기 위해 mongoDB와 통신하므로 높은 CPU 및 네트워크 사용량을 보임
