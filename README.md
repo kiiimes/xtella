@@ -170,9 +170,9 @@ curl 'http://localhost:9090/api/v1/query_range?query=container_fs_usage_bytes&st
 ## 실험 결과
 ### Hotel reservation 워크로드의 구조
 ![t937P9Zn54Yu5VQGQ5GamAz6hvQQk12FS_4L7zfdfK9VekNEqjEkYzjTe6z74L_CyedXmpGXFdq6-Rw5J6WzasI2riMzeGiF6vDxkqLVSLgFpSZEffsDW5uartHYuQ8LBH-STdqG](https://user-images.githubusercontent.com/28219985/147912851-3b65c691-332d-481a-aa31-562c313c35a4.png)
-	* 각 마이크로 서비스는 frontend, business logic, caching & DB 로 구성
-	* 모든 http request는 frontend를 거쳐 전달되고 Search, User, Recommend, Reserve 중 요청하는 서비스에 따라 그 뒤에 실행되는 마이크로 서비스가 달라짐. 
-	* caching & DB는 memcached와 mongoDB로 이루어짐. memcached의 hit, miss 여부에 따라 mongoDB의 접근 여부가 달라짐. 
+* 각 마이크로 서비스는 frontend, business logic, caching & DB 로 구성
+* 모든 http request는 frontend를 거쳐 전달되고 Search, User, Recommend, Reserve 중 요청하는 서비스에 따라 그 뒤에 실행되는 마이크로 서비스가 달라짐. 
+* caching & DB는 memcached와 mongoDB로 이루어짐. memcached의 hit, miss 여부에 따라 mongoDB의 접근 여부가 달라짐. 
 ### 실험 결과 요약
 ![F35D3540-E531-4C98-B856-033A0BD4FE56](https://user-images.githubusercontent.com/28219985/147912891-dc5bc6d7-bd59-44c4-bda5-d84814ed8fb7.png)
 ![FC0DFF96-6EFC-4B2D-A820-FA4DCBF27E39](https://user-images.githubusercontent.com/28219985/147912895-0ccefc40-f36f-4120-9bdf-052f3f6f4d37.png)
