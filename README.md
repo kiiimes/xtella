@@ -177,10 +177,11 @@ curl 'http://localhost:9090/api/v1/query_range?query=container_fs_usage_bytes&st
 ![F35D3540-E531-4C98-B856-033A0BD4FE56](https://user-images.githubusercontent.com/28219985/147912891-dc5bc6d7-bd59-44c4-bda5-d84814ed8fb7.png)
 ![FC0DFF96-6EFC-4B2D-A820-FA4DCBF27E39](https://user-images.githubusercontent.com/28219985/147912895-0ccefc40-f36f-4120-9bdf-052f3f6f4d37.png)
 * frontend: 
-	* frontend는 모든 http request가 거쳐가므로 가장 높은 CPU 사용량과 network bandwidth를 보임
+	* Frontend는 모든 HTTP request가 거쳐가므로 CPU 사용량은 전체 중 33%, 네트워크 처리량은 전체 중 47~55%로 높은 자원 사용량을 보임
 * business logic: 
-	* wrk 스크립트는 workload.lua 파일을 실행하는데 DeathStarBench에서 제공하는 workload 스크립트 상에서 Search 서비스가 가장 많은 비율 (0.6) 으로  서비스 요청이 되어 Search 서비스에서 호출하는 profile, geo, rate 서비스에서 높은 CPU 및 네트워크 사용량을 보임
-	* reservation 서비스는 0.05의 낮은 비율로 호출됨에도 예약 정보를 저장하기 위해 mongoDB와 통신하므로 높은 CPU 및 네트워크 사용량을 보임
+	* Wrk(HTTP load generator)는 DeathStarBench에서 제공하는 workload 스크립트인 workload.lua 파일을 실행하는데 스크립트에서 호출되는 서비스 비율에 따라 CPU 및 네트워크 사용량이 달라짐
+	* Search 서비스가 가장 높은 비율(0.6) 으로 서비스 요청이 되어 Search 서비스에서 호출하는 Profile(CPU : 70.77%, 네트워크 : 11Mbps), Geo(CPU : 60.20%, 네트워크 : 3Mbps), Rate(CPU : 68.57%, 네트워크 : 12Mbps) 서비스에서 다른 서비스 대비 높은 CPU 및 네트워크 사용량을 보임
+	* Reservation 서비스는 낮은 비율(Recommendation : 0.39, Reservation : 0.005)로 스크립트에서 호출됨에도 예약 정보를 저장하기 위해 MongoDB와 통신하므로 Recommendation 서비스의 자원 사용량(CPU: 33.20%, 네트워크 : 4.35Mbps)을 보임
 * caching & DB : 
 	* mongoDB는 예약된 정보 및 checkpoint를 파일 시스템에 기록하므로 disk bandwidth (write)가 발생하고 기록된 정보들 중 읽어오는 데이터는 없기 때문에 disk bandwidth (read)는 발생하지 않음
 	* memcached의 경우, 데이터를 캐시처리하기 때문에 LLC bandwidth에 영향을 미침
